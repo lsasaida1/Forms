@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Thanks — S1 feedback</title>
+<style>
+:root {
+--bg: #f5f7fa; --card: #ffffff; --text: #111827; --muted: #6b7280; --primary: #22c55e;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+background: linear-gradient(135deg, #e0f2fe, #f5f7fa); color: var(--text); display: grid; place-items: center; padding: 24px;
+}
+.card {
+width: 100%; max-width: 720px; background: var(--card); border: 1px solid #e5e7eb; border-radius: 20px; padding: 32px; box-shadow: 0 12px 32px rgba(0,0,0,.08);
+text-align: center;
+}
+h1 { margin: 0 0 8px; }
+p { margin: 0 0 18px; color: var(--muted); }
+.meta { margin-top: 8px; font-size: 12px; color: var(--muted); }
+a.btn { display: inline-block; margin-top: 16px; padding: 12px 16px; border-radius: 12px; text-decoration: none; color: #fff; background: linear-gradient(180deg, var(--primary), #16a34a); }
+</style>
+</head>
+<body>
+<main class="card">
+<h1>thank you!</h1>
+<p>We have received your submission.</p>
+<div id="extra" class="meta"></div>
+<a id="back" class="btn" href="./feedback.html">back to form</a>
+</main>
+<script>
+// Optional: show small confirmation details if present in query string
+const params = new URLSearchParams(location.search);
+const extra = document.getElementById('extra');
+const unit = params.get('unit');
+const sid = params.get('sid');
+const t = params.get('t');
+const bits = [];
+if (unit) bits.push('الوحدة: ' + unit);
+if (sid) bits.push('Session: ' + sid);
+if (t) bits.push('Time: ' + new Date(parseInt(t, 10)).toLocaleString());
+if (bits.length) extra.textContent = bits.join(' • ');
+</script>
+</body>
+</html>
